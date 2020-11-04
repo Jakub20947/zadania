@@ -15,7 +15,6 @@ void printBits( unsigned int n )
     cout << tmp;
 }
 
-
 void showOperation( unsigned int a, unsigned int b, unsigned int result, char op )
 {
     cout << "   ";
@@ -27,18 +26,13 @@ void showOperation( unsigned int a, unsigned int b, unsigned int result, char op
     cout << " (" << result << ")\n\n";
 }
 
-
-
-
-
-	int add( int a, int b )
+int add( int a, int b )
 {
     if( b == 0 )
          return a;
    
     return add( a ^ b,( a & b ) << 1 );
 }
-
 
 int main()
 {
