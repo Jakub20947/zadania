@@ -22,7 +22,7 @@ int main(int argc, char** argv)
                file>>liczba;   
                liczba =  strtol(liczba.c_str(), NULL, 16);
 
-               if(liczba_nieparzysta) 
+               if(liczba_parzysta) 
                {
                             nieparzysta = liczba%2;
                             //nie wiem jak napisać to zaokrąglenie w dół do najbliższej liczby parzystej
