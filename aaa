@@ -1,0 +1,53 @@
+#include <iostream>
+#include <cstdlib>
+#include <string>
+#include <iostream>
+#include <fstream>
+#include <stdio.h>
+#include <stdlib.h>
+
+using namespace std;
+
+
+bool palindrom(string wyraz)
+{
+    string odwrocony;   
+    int dlugosc = wyraz.length(); 
+
+    
+    for(int i = 0; i < dlugosc; i++)
+    {
+        odwrocony += wyraz[dlugosc - i - 1];
+    }
+
+    
+    return wyraz == odwrocony;
+}
+
+int main(int argc, char** argv) {
+ ifstream file; 
+ ofstream fileOut; 
+
+ string wyraz; 
+ file.open("dane.txt"); 
+ fileOut.open("wynik.txt"); 
+  
+ if(file.good())  
+     while(!file.eof())        
+     {
+               file>>wyraz;  
+               
+if (palindrom(wyraz) == true)
+    {
+        wyraz=palindrom;
+    }
+    else
+    {
+        cout << "Wyraz nie jest palindromem" << endl;
+    }
+     }
+ fileOut<< wyraz <<endl; 
+ file.close();
+ fileOut.close();
+ return 0;
+}
