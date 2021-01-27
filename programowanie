@@ -1,35 +1,67 @@
 #include <iostream>
 #include <fstream>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <cstdlib>
-
+/* run this program using the console pauser or add your own getch, system("pause") or input loop */
 using namespace std;
+int liczba;
+int t[1001];
+int r1, r2, rk,r;
 
-int main(int argc, char** argv)
+class files {
+   ifstream fileIn;
+   ofstream fileOut;
+  public:
+   files();
+   ~files();
+   void loop();
+};
+files::files()
 {
- ifstream file; 
- ofstream fileOut; 
- char* endptr; 
- string liczba; 
- file.open("wejscie.txt"); 
- fileOut.open("wyjscie.txt"); 
+   fileIn.open("bledne.txt");
+   fileOut.open("wynik3.txt");
 
- if(file.good()) 
-     while(!file.eof())        
-     {
-               file>>liczba;   
-               liczba =  strtol(liczba.c_str(), NULL, 16);
+   if (!fileIn.good())
+     cerr << "plik wejscia nie istnieje\n";
+   if (!fileOut.good())
+     cerr << "plik wyjscia nie istnieje\n";
+}
 
-               if(liczba_parzysta) 
-               {
-                            nieparzysta = liczba%2;
-                            //nie wiem jak napisać to zaokrąglenie w dół do najbliższej liczby parzystej
-               }; 
-     };
- fileOut << nieparzysta <<endl; 
- file.close();
- fileOut.close();
- return 0;
+files::~files()
+{
+   fileIn.close();
+   fileOut.close();
+}
+
+void files::loop()
+{
+
+ //pętla WHILE do pliku fileIn
+ 	while(!fileIn.eof()){
+			fileIn >> liczba;
+			for (int i=0; i<liczba; i++) 
+			plik<<t[i];
+    		r1 = t[1] - t[0]
+    		r2 = t[2] - t[1];
+		
+			if (r1 == r2) r = r1;
+			else { rk= t[liczba-1]-t[liczba-2];
+			if {rk==r1)
+			{ r = r1;}
+			else{
+ 			if (rk==r2)
+			 r= r2;}
+ 			else 
+   			r= rk;
+			   }
+			}
+			fileOut<<r;
+			}
+		
+		}
+}
+
+int main(int argc, char** argv) 
+	{
+  files dane;
+  dane.loop();
+  return 1;
 }
