@@ -4,7 +4,7 @@
 
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 using namespace std;
-int liczba, min, max;
+int liczba, min=0, max=1000000;
 class files {
    ifstream fileIn;
    ofstream fileOut;
