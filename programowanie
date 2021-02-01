@@ -1,24 +1,22 @@
 #include <iostream>
+#include <iomanip>
 #include <fstream>
+
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 using namespace std;
-int liczba;
-int t[1001];
-int r1, r2, rk,r;
-
+int liczba, min, max;
 class files {
    ifstream fileIn;
    ofstream fileOut;
   public:
-   files();
+   files(); 
    ~files();
    void loop();
 };
 files::files()
 {
-   fileIn.open("bledne.txt");
-   fileOut.open("wynik3.txt");
-
+   fileIn.open("liczby1.txt");
+   fileOut.open("liczby2.txt");
    if (!fileIn.good())
      cerr << "plik wejscia nie istnieje\n";
    if (!fileOut.good())
@@ -33,29 +31,18 @@ files::~files()
 
 void files::loop()
 {
-
- //pętla WHILE do pliku fileIn
- 	while(!fileIn.eof()){
-			fileIn >> liczba;
-			for (int i=0; i<liczba; i++) 
-			plik<<t[i];
-    		r1 = t[1] - t[0]
-    		r2 = t[2] - t[1];
+	while(!fileIn.eof()){
+			fileIn >> oct >> liczba;
 		
-			if (r1 == r2) r = r1;
-			else { rk= t[liczba-1]-t[liczba-2];
-			if {rk==r1)
-			{ r = r1;}
-			else{
- 			if (rk==r2)
-			 r= r2;}
- 			else 
-   			r= rk;
-			   }
+			if (liczba < min){
+				min = liczba;
+			fileOut<<"Najmniejsza:"<<oct<<min<<endl;	
 			}
-			fileOut<<r;
-			}
-		
+			
+			if (liczba > max){
+				max = liczba;
+				fileOut<<"Największa:"<<oct<<max;
+			}	
 		}
 }
 
