@@ -1,3 +1,4 @@
+62.3
 #include <iostream>
 #include <fstream>
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
@@ -30,9 +31,7 @@ files::~files()
 }
 
 void files::loop()
-{
-
- //pętla do pliku fileIn
+{	//pętla do pliku fileIn
  	for(i=0; i<1000; i++) {
         fileIn >> oct >> liczba1;
         fileIn2 >> dec >> liczba2;
@@ -54,4 +53,60 @@ int main(int argc, char** argv)
   dane.loop();
   return 1;
  	
+}
+///////////////////
+62.4:
+
+#include <iostream>
+#include <fstream>
+/* run this program using the console pauser or add your own getch, system("pause") or input loop */
+using namespace std;
+int number;
+int count6=0;
+class files {
+   ifstream fileIn;
+   ofstream fileOut;
+  public:
+   files(); //otwarcie plików obu
+   ~files();
+   void loop();
+};
+files::files()
+{
+   fileIn.open(" liczby2.txt");
+   if (!fileIn.good())
+     cerr << "plik wejscia nie istnieje\n";
+  
+}
+
+files::~files()
+{
+   fileIn.close();
+   fileOut.close();
+}
+
+void files::loop()
+{
+
+ //pętla WHILE do pliku fileIn
+ 	while(!fileIn.eof()){
+			fileIn >> number;
+				while (number > 0)
+  				{
+       			if (number %10 == 6)
+              	count6++;
+       			number/=10;
+ 				}
+ 				
+				cout<<count6<<endl;
+			}
+		}
+
+
+int main(int argc, char** argv) 
+	{
+  files dane;
+  dane.loop();
+  return 1;
+  return count6;
 }
