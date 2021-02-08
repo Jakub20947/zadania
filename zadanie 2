@@ -7,7 +7,6 @@ int i,taka_sama = 0,wieksza = 0,liczba1,liczba2;
 class files {
    ifstream fileIn;
       ifstream fileIn2;
-   ofstream fileOut;
   public:
    files(); //otwarcie plików obu
    ~files();
@@ -25,7 +24,7 @@ files::files()
 files::~files()
 {
    fileIn.close();
-   fileOut.close();
+   fileIn2.close();
 }
 
 void files::loop()
@@ -61,7 +60,6 @@ int number;
 int count6=0;
 class files {
    ifstream fileIn;
-   ofstream fileOut;
   public:
    files(); //otwarcie plików obu
    ~files();
@@ -78,7 +76,6 @@ files::files()
 files::~files()
 {
    fileIn.close();
-   fileOut.close();
 }
 
 void files::loop()
