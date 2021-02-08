@@ -1,9 +1,7 @@
 #include <iostream>
 #include <fstream>
-/* run this program using the console pauser or add your own getch, system("pause") or input loop */
 using namespace std;
-int number;
-int count6=0;
+int number; int count6=0;
 class files {
    ifstream fileIn;
    ofstream fileOut;
