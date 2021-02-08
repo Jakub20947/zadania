@@ -1,0 +1,55 @@
+#include <iostream>
+#include <fstream>
+/* run this program using the console pauser or add your own getch, system("pause") or input loop */
+using namespace std;
+int number;
+int count6=0;
+class files {
+   ifstream fileIn;
+   ofstream fileOut;
+  public:
+   files(); //otwarcie plików obu
+   ~files();
+   void loop();
+};
+files::files()
+{
+   fileIn.open("liczby2.txt");
+   fileOut.open("17v2.txt");
+   // tu można dodać 
+   if (!fileIn.good())
+     cerr << "plik wejscia nie istnieje\n";
+  
+}
+
+files::~files()
+{
+   fileIn.close();
+   fileOut.close();
+}
+
+void files::loop()
+{
+
+ //pętla WHILE do pliku fileIn
+ 	while(!fileIn.eof()){
+			fileIn >> number;
+				while (number > 0)
+  				{
+       			if (number %10 == 6)
+              	count6++;
+       			number/=10;
+ 				}
+ 				
+				fileOut<<count6<<endl;
+			}
+		}
+
+
+int main(int argc, char** argv) 
+	{
+  files dane;
+  dane.loop();
+  return 1;
+  return count6;
+}
