@@ -1,54 +1,73 @@
 #include <iostream>
-#include <iomanip>
+#include <string>
 #include <fstream>
+#include <cstdlib>
 
-/* run this program using the console pauser or add your own getch, system("pause") or input loop */
 using namespace std;
-int liczba, min=0, max=1000000;
-class files {
-   ifstream fileIn;
-   ofstream fileOut;
-  public:
-   files(); 
-   ~files();
-   void loop();
+
+class plik {
+    ifstream input;
+    int ile=0,dwie_jedynki,ciag,d,dwucykliczny;
+    
+    public:
+        void otworzPlik();
+        void zamknijPlik();
+        void wczytajPlik();
+        void jedynki();
+        void ile_ciagow();
+        void czy_dwucykliczny();
+        void wypisz();
 };
-files::files()
-{
-   fileIn.open("liczby1.txt");
-   fileOut.open("liczby2.txt");
-   if (!fileIn.good())
-     cerr << "plik wejscia nie istnieje\n";
-   if (!fileOut.good())
-     cerr << "plik wyjscia nie istnieje\n";
+
+void plik::otworzPlik() {
+    input.open("ciagi.txt");
 }
 
-files::~files()
-{
-   fileIn.close();
-   fileOut.close();
+void plik::zamknijPlik() {
+    input.close();
 }
 
-void files::loop()
-{
-	while(!fileIn.eof()){
-			fileIn >> oct >> liczba;
-		
-			if (liczba < min){
-				min = liczba;
-			fileOut<<"Najmniejsza:"<<oct<<min<<endl;	
-			}
-			
-			if (liczba > max){
-				max = liczba;
-				fileOut<<"Największa:"<<oct<<max;
-			}	
-		}
+void plik::wczytajPlik() {
+	while(!input.eof()){
+		getline(input, ciag);
+	}
+}
+//63.2
+void plik::jedynki() {
+    bool dwie_jedynki(string ciag){
+	for (int i=0; i<ciag.length()-1; i++)
+ 	if (ciag[i]=='1' && ciag[i+1]=='1') return false;
+	return true;
+} 
+
+}
+void plik::ile_ciagow()	{
+	for (int i=0; i<1000; i++)
+ 	if (dwie_jedynki(ciagi[i])) ile++;
+	 cout << "liczba ciągów: "<< ile;	
+}
+//63.1
+void plik::czy_dwucykliczny(){
+	bool dwucykliczny(string ciag)
+		{ int d=ciag.length();
+ 		if (d%2==1) return false;
+ 		for (int j=0; j<d/2; j++)
+ 		if (ciag[j]!=ciag[d/2+j]) return false;
+ 		return true;
+	}
+}
+void plik::wypisz(){
+	for(int i=0; i<1000; i++)
+ 	if (dwucykliczny(ciagi[i]))
+ 	cout<<ciagi[i]<<endl;
 }
 
-int main(int argc, char** argv) 
-	{
-  files dane;
-  dane.loop();
-  return 1;
+int main(int argc, char** argv) {
+    plik p;
+    p.otworzPlik();
+    p.wczytajPlik();
+    p.jedynki();
+    p.ile_ciagow();
+    p.zamknijPlik();  
+    return 0;
 }
