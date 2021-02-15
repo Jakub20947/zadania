@@ -7,7 +7,7 @@ using namespace std;
 
 class plik {
     ifstream input;
-    int ile=0,dwie_jedynki,ciag,d,dwucykliczny;
+    int ile=0,dwie_jedynki,ciag,d,dwucykliczny,j;
     
     public:
         void otworzPlik();
