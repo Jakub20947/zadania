@@ -1,0 +1,54 @@
+#include <iostream>
+#include <string>
+#include <fstream>
+
+using namespace std;
+
+class plik {
+    ifstream input;
+    string wiersz;
+  
+    
+    public:
+        void otworzPlik();
+        void zamknijPlik();
+        void wczytajPlik();
+        void wypisz();
+        void ile_czarnych();
+};
+
+void plik::otworzPlik() {
+    input.open("dane_obrazki.txt");
+}
+
+void plik::zamknijPlik() {
+    input.close();
+}
+
+void plik::wczytajPlik() {
+    while(!input.eof()){
+			input >> wiersz;
+			
+		}
+}
+
+void plik::ile_czarnych(){
+	int licznik_jedynek=0;
+ for (int i=0; i<20; i++)
+	if (wiersz[i] == '1') 
+	licznik_jedynek++;
+}
+void plik::wypisz() {
+    cout<<licznik_jedynek;
+}
+
+
+int main(int argc, char** argv) {
+    plik p;
+    p.otworzPlik();
+    p.wczytajPlik();
+    p.ile_czarnych()
+    p.wypisz();
+    p.zamknijPlik();  
+    return 0;
+}
