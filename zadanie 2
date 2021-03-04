@@ -1,74 +1,74 @@
-#include <iostream>
-#include <string>
 #include <fstream>
 #include <cstdlib>
-#include <vector>
+#include <iostream>
 
 using namespace std;
 
-class plik {
-    ifstream input; string liczba;
-    int bin2dec, dziesietna,number,vector,factors[ ], czynniki[ ];
-    
-    public:
-        void otworzPlik();
-        void zamknijPlik();
-        void wczytajPlik();
-        void zamiana();
-        void rozklad();
-        void wypisanie();
+class file
+{
+        ifstream inFile1;
+        ifstream inFile2;
        
+        public:
+                file();
+                ~file();
+                void loop(); //pętla wczytująca z pliku
+//USER CODE 1: pozostałe metody programu
 };
 
-void plik::otworzPlik() {
-    input.open("ciagi.txt");
-}
 
-void plik::zamknijPlik() {
-    input.close();
-}
-
-void plik::wczytajPlik() {
-	while(!input.eof()){
-		input >> liczba;
-	}
-}
-void plik::zamiana() {
-	int bin2dec (string liczba);
+file::file()
 {
-    dziesietna = strtol(liczba.c_str(), NULL, 2);
-    // return dziesietna;
+        inFile1.open("liczby1.txt"); //tu nazwa pliku wejscia
+        if (!inFile1.good())
+        {
+                cerr << "Blad - pliku 1 nie da sie otworzyc!\n";
+                exit(1);
+        }
+        
+        inFile2.open("liczby2.txt"); //tu nazwa pliku wejscia
+        if (!inFile2.good())
+        {
+                cerr << "Blad - pliku 2 nie da sie otworzyc!\n";
+                exit(1);
+        }
 }
-	}
 
+file::~file()
+{
+        inFile1.close();
+        inFile2.close();
+}
 
-void plik::rozklad(){
-	vector <int> factors(int number)
-	{
- 	vector <int> czynniki;
- 	for (int i=2; i<dziesietna/2; i++)
- 	{
-   while (dziesietna %i ==0)
-    {
-         dziesietna /=i;
-         czynniki.push_back(i);
+//USER CODE 2: pozostałe metody - implementacja
+
+void file::loop()
+{
+        int i;
+    int liczbar = 0;
+    int liczbaw = 0;
+    int licz1;
+    int licz2; 
+        while (!inFile1.eof(), !inFile2.eof() ) //string po stringu (do spacji/nowej linii) wczyta cały plik
+        {
+                for(i=0; i<1000; i++) {
+        inFile1 >> oct >> licz1;
+        inFile2 >> dec >> licz2;
+
+        if (licz1 == licz2) {
+            liczbar++;
+        } else if (licz1 > licz2) {
+            liczbaw++;
+        }
     }
- }
- return czynniki;
-}
-}
-void plik::wypisanie() {
-	for( size_t i = 0; i < czynniki.size(); i++ )
-         cout<<( "%d, ", czynniki[ i ] );
+                cout << liczbar << " par liczb ma te sama wartosc\n";
+    			cout << liczbaw << " liczb z pierwszego pliku jest wiekszych od odpowiadajacych im liczb z drugiego pliku\n\n";
+        }
 }
 
-int main(int argc, char** argv) {
-    plik p;
-    p.otworzPlik();
-    p.wczytajPlik();
-    p.zamiana();
-    p.rozklad();
-    p.wypisanie();
-    p.zamknijPlik();  
-    return 0;
+int main()
+{
+        file f;
+        f.loop();
+        return 0;
 }
