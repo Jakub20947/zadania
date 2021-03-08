@@ -1,74 +1,62 @@
-#include <fstream>
-#include <cstdlib>
 #include <iostream>
+#include <string>
+#include <fstream>
+#define RZM 20
+typedef short obrazek[RZM+1][RZM+1];
 
 using namespace std;
 
-class file
-{
-        ifstream inFile1;
-        ifstream inFile2;
-       
-        public:
-                file();
-                ~file();
-                void loop(); //pętla wczytująca z pliku
-//USER CODE 1: pozostałe metody programu
+class plik {
+    ifstream input;int i,j;
+    string nazwa_pliku = "dane_obrazki.txt";
+    
+    public:
+        void otworzPlik();
+        void zamknijPlik();
+        void wczytajPlik();
+        bool czyRekurencyjny();
 };
 
-
-file::file()
-{
-        inFile1.open("liczby1.txt"); //tu nazwa pliku wejscia
-        if (!inFile1.good())
-        {
-                cerr << "Blad - pliku 1 nie da sie otworzyc!\n";
-                exit(1);
-        }
-        
-        inFile2.open("liczby2.txt"); //tu nazwa pliku wejscia
-        if (!inFile2.good())
-        {
-                cerr << "Blad - pliku 2 nie da sie otworzyc!\n";
-                exit(1);
-        }
-}
-
-file::~file()
-{
-        inFile1.close();
-        inFile2.close();
-}
-
-//USER CODE 2: pozostałe metody - implementacja
-
-void file::loop()
-{
-        int i;
-    int liczbar = 0;
-    int liczbaw = 0;
-    int licz1;
-    int licz2; 
-        while (!inFile1.eof(), !inFile2.eof() ) //string po stringu (do spacji/nowej linii) wczyta cały plik
-        {
-                for(i=0; i<1000; i++) {
-        inFile1 >> oct >> licz1;
-        inFile2 >> dec >> licz2;
-
-        if (licz1 == licz2) {
-            liczbar++;
-        } else if (licz1 > licz2) {
-            liczbaw++;
-        }
+void plik::otworzPlik() {
+    input.open( nazwa_pliku.c_str(), std::ios::in );
+if( !input.is_open() ) {
+    cout << endl << "Blad otwarcia pliku wejsciowego." << endl;
     }
-                cout << liczbar << " par liczb ma te sama wartosc\n";
-    			cout << liczbaw << " liczb z pierwszego pliku jest wiekszych od odpowiadajacych im liczb z drugiego pliku\n\n";
-        }
 }
 
-int main()
+void plik::zamknijPlik() {
+    input.close();
+}
+
+void plik::wczytajPlik() {
+    for( int i = 0; i < 20; i++ )
 {
-        file f;
-        f.loop();
-        return 0;
+    for( int j = 0; j < 20; j++ )
+    {
+        input >> RZM[ i ][ j ];
+    }
+    cout<<RZM;
+}
+}
+
+bool czyRekurencyjny(obrazek robr){
+ int s=RZM/2;
+ for(int i=0; i<RZM/2; i++)
+ for(int j=0; j<RZM/2; j++){
+ if (robr[i][j]!=robr[i+s][j]) return false;
+ if (robr[i][j]!=robr[i][j+s]) return false;
+ if (robr[i][j]!=robr[i+s][j+s])
+ return false;
+ }
+ return true;
+ cout<<"rekurencyjny";
+} 
+
+int main(int argc, char** argv) {
+    plik p;
+    p.otworzPlik();
+    p.wczytajPlik();
+    p.czyRekurencyjny();
+    p.zamknijPlik();  
+    return 0;
 }
