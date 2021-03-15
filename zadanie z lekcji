@@ -59,6 +59,25 @@ void plik::ileBlednychKolumn(){
  } 
 }
 
+void plik::stanPoprawnosci(obrazek pobraz){
+
+ int ileBlWiersz, ileBlKol;
+ ileBlWiersz=0;
+ ileBlKol=0;
+ for(int i=0; i<RZM; i++){
+ parzysteWiersz=parzKol=0;
+ for(int j=0; j<RZM; j++){
+ parzysteWiersz=parzysteWiersz+pobraz[i][j];
+ parzKol=parzKol+pobraz[j][i];
+ }
+ if ((parzysteWiersz%2)!=pobraz[i][RZM]) ileBlWiersz++;
+ if ((parzKol%2)!=pobraz[RZM][i]) ileBlKol++;
+ }
+ if (liczbaBlednychWiersz+liczbaBlednychKol==0) return 0;
+ if (liczbaBlednychWiersz<=1 && liczbaBlednychKol<=1) return 1;
+ return liczbaBlednychWiersz+liczbaBlednychKol;
+}
+
 void plik::wypisanie(){
  cout<<"liczba błędnych wierszy: "<< liczbaBlednychWiersz;
  cout<<"liczba błędnych kolumn: "<< liczbaBlednychKol;
