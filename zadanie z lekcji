@@ -18,6 +18,7 @@ class plik {
         void wczytajPlik();
         void ileBlednychWierszy();
 		void ileBlednychKolumn();
+		void ileBlednychWierszy();
         void wypisanie();
 };
 
@@ -89,6 +90,7 @@ int main(int argc, char** argv) {
     p.wczytajPlik();
     p.ileBlednychWierszy();
     p.ileBlednychKolumn();
+    p.ileBlednychWierszy();
     p.wypisanie();
     p.zamknijPlik();  
     return 0;
