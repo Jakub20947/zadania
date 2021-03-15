@@ -62,9 +62,7 @@ void plik::ileBlednychKolumn(){
 
 void plik::stanPoprawnosci(obrazek pobraz){
 
- int ileBlWiersz, ileBlKol;
- ileBlWiersz=0;
- ileBlKol=0;
+
  for(int i=0; i<RZM; i++){
  parzysteWiersz=parzKol=0;
  for(int j=0; j<RZM; j++){
