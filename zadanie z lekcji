@@ -9,6 +9,7 @@ using namespace std;
 
 class plik {
     ifstream input;
+    int wiersz, kolumna;
     int i,j,parzysteWiersz,parzKol,pobraz,
     string nazwa_pliku = "dane_obrazki.txt";
     
