@@ -18,8 +18,8 @@ class plik {
         void wczytajPlik();
         void ileBlednychWierszy();
 		void ileBlednychKolumn();
-		void ileBlednychWierszy();
-        void wypisanie();
+		void korekta();
+        void wypisanie(); void stanPoprawnosci(); void korekta();
 };
 
 void plik::otworzPlik() {
@@ -34,9 +34,9 @@ void plik::zamknijPlik() {
 }
 
 void plik::wczytajPlik() {
-    for( int i = 0; i < 21; i++ )
+    for( int i = 0; i < 20; i++ )
 {
-    for( int j = 0; j < 21; j++ )
+    for( int j = 0; j < 20; j++ )
     {
         input >> RZM[i][j];
     }
@@ -59,7 +59,6 @@ void plik::ileBlednychKolumn(){
  if ((parzKol%2)!=pobraz[RZM][i]) liczbaBlednychKol++;
  } 
 }
-
 void plik::stanPoprawnosci(obrazek pobraz){
 
 
@@ -77,9 +76,29 @@ void plik::stanPoprawnosci(obrazek pobraz){
  return liczbaBlednychWiersz+liczbaBlednychKol;
 }
 
+void plik::korekta(){
+	int parzw,parzk;
+ struct korekta wynik;
+ wynik.wiersz=ROZM+1;
+ wynik.kolumna=ROZM+1;
+ for(int i=0; i<RZM; i++){
+ parzysteWiersz=parzKol=0;
+ for(int j=0; j<RZM; j++){
+ parzysteWiersz=parzysteWiersz+pobraz[i][j];
+ parzKol=parzKol+pobraz[j][i];
+ }
+ if ((parzysteWiersz%2)!=pobraz[i][ROZM])
+ wynik.wiersz=i+1;
+ if ((parzKol%2)!=pobraz[ROZM][i])
+ wynik.kolumna=i+1;
+ }
+ return wynik;
+}
+	
+}
+
 void plik::wypisanie(){
- cout<<"liczba błędnych wierszy: "<< liczbaBlednychWiersz;
- cout<<"liczba błędnych kolumn: "<< liczbaBlednychKol;
+ cout<< wynik;
 } 
 
 int main(int argc, char** argv) {
@@ -88,7 +107,8 @@ int main(int argc, char** argv) {
     p.wczytajPlik();
     p.ileBlednychWierszy();
     p.ileBlednychKolumn();
-    p.ileBlednychWierszy();
+    p.stanPoprawnosci();
+    p.korekta();
     p.wypisanie();
     p.zamknijPlik();  
     return 0;
