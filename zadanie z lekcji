@@ -87,6 +87,8 @@ int main(int argc, char** argv) {
     plik p;
     p.otworzPlik();
     p.wczytajPlik();
+    p.ileBlednychKolumn();
+    p.ileBlednychWierszy();
     p.korekta();
     p.wypisanie();
     p.zamknijPlik();  
