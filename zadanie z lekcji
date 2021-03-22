@@ -18,7 +18,7 @@ class plik {
         void zamknijPlik();
         void wczytajPlik();
         void korekta();
-        void wypisanie(); 
+        void wypisanie(); void ileBlednychWierszy(); void ileBlednychKolumn();
 };
 
 void plik::otworzPlik() {
