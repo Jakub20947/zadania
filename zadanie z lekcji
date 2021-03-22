@@ -2,6 +2,7 @@
 #include <string>
 #include <fstream>
 #define RZM 20
+#define ROZM
 typedef short obrazek[RZM+1][RZM+1];
 
 using namespace std;
@@ -9,17 +10,14 @@ using namespace std;
 class plik {
     ifstream input;
     int i,j,parzysteWiersz,parzKol,pobraz,
-	liczbaBlednychWiersz=0,liczbaBlednychKol=0;
     string nazwa_pliku = "dane_obrazki.txt";
     
     public:
         void otworzPlik();
         void zamknijPlik();
         void wczytajPlik();
-        void ileBlednychWierszy();
-		void ileBlednychKolumn();
-		void korekta();
-        void wypisanie(); void stanPoprawnosci(); void korekta();
+        void korekta();
+        void wypisanie(); 
 };
 
 void plik::otworzPlik() {
@@ -43,38 +41,7 @@ void plik::wczytajPlik() {
     cout<<RZM;
 }
 }
-void plik::ileBlednychWierszy(){
- for(int i=0; i<RZM; i++){
- parzysteWiersz=0;
- for(int j=0; j<RZM; j++)
- parzysteWiersz=parzysteWiersz+pobraz[i][j]; //pobraz przechowywuje liczbę błędnych bitów parzystości wierszy
- if ((parzysteWiersz%2)!=pobraz[i][RZM]) liczbaBlednychWiersz++;
- } 
-}
-void plik::ileBlednychKolumn(){
- for(int i=0; i<RZM; i++){
- parzKol=0;
- for(int j=0; j<RZM; j++)
- parzysteWiersz=parzysteWiersz+pobraz[j][i];
- if ((parzKol%2)!=pobraz[RZM][i]) liczbaBlednychKol++;
- } 
-}
-void plik::stanPoprawnosci(obrazek pobraz){
 
-
- for(int i=0; i<RZM; i++){
- parzysteWiersz=parzKol=0;
- for(int j=0; j<RZM; j++){
- parzysteWiersz=parzysteWiersz+pobraz[i][j];
- parzKol=parzKol+pobraz[j][i];
- }
- if ((parzysteWiersz%2)!=pobraz[i][RZM]) ileBlWiersz++;
- if ((parzKol%2)!=pobraz[RZM][i]) ileBlKol++;
- }
- if (liczbaBlednychWiersz+liczbaBlednychKol==0) return 0;
- if (liczbaBlednychWiersz<=1 && liczbaBlednychKol<=1) return 1;
- return liczbaBlednychWiersz+liczbaBlednychKol;
-}
 
 void plik::korekta(){
 	int parzw,parzk;
@@ -105,9 +72,6 @@ int main(int argc, char** argv) {
     plik p;
     p.otworzPlik();
     p.wczytajPlik();
-    p.ileBlednychWierszy();
-    p.ileBlednychKolumn();
-    p.stanPoprawnosci();
     p.korekta();
     p.wypisanie();
     p.zamknijPlik();  
