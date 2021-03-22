@@ -43,7 +43,22 @@ void plik::wczytajPlik() {
 }
 }
 
-
+void plik::ileBlednychWierszy(){
+ for(int i=0; i<RZM; i++){
+ parzysteWiersz=0;
+ for(int j=0; j<RZM; j++)
+ parzysteWiersz=parzysteWiersz+pobraz[i][j]; //pobraz przechowywuje liczbę błędnych bitów parzystości wierszy
+ if ((parzysteWiersz%2)!=pobraz[i][RZM]) liczbaBlednychWiersz++;
+ } 
+}
+void plik::ileBlednychKolumn(){
+ for(int i=0; i<RZM; i++){
+ parzKol=0;
+ for(int j=0; j<RZM; j++)
+ parzysteWiersz=parzysteWiersz+pobraz[j][i];
+ if ((parzKol%2)!=pobraz[RZM][i]) liczbaBlednychKol++;
+ } 
+}
 void plik::korekta(){
  struct korekta wynik;
  wynik.wiersz=ROZM+1;
