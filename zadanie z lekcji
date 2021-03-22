@@ -44,7 +44,6 @@ void plik::wczytajPlik() {
 
 
 void plik::korekta(){
-	int parzw,parzk;
  struct korekta wynik;
  wynik.wiersz=ROZM+1;
  wynik.kolumna=ROZM+1;
