@@ -1,7 +1,4 @@
-#include <iostream>
-#include <string>
-#include <iomanip>
-#include <fstream>
+include <fstream>
 using namespace std;
 
 class plik {
@@ -12,8 +9,10 @@ class plik {
         void otworzPlik();
         void zamknijPlik();
         void wczytajPlik();
-        void petla();
+        void Euklides();
         void wypisanie(); 
+        void zliczenie();
+        
 };
 
 void plik::otworzPlik() {
@@ -34,42 +33,34 @@ void plik::wczytajPlik() {
         input>>licznik[i]>>mianownik[i];
 		
 }
-void plik::petla(){
-	float minimum=10000;
-    int minimum_mianownik=100000;
-    int minimum_licznik=100000;
-    for (int i=0;i<1000;i++)
-    {
-        float iloraz=float(licznik[i])/float(mianownik[i]);
-        if(iloraz==minimum)
-        {
-            if(mianownik[i]<minimum_mianownik)
-                {
-                    minimum=iloraz;
-                    minimum_mianownik=mianownik[i];
-                    minimum_licznik=licznik[i];
-                }
-        }
-        else if(iloraz<minimum)
-        {
-                minimum=iloraz;
-                minimum_mianownik=mianownik[i];
-                minimum_licznik=licznik[i];
-        }
-    }
+void plik::Euklides(){
+	int nwd(int n, int m){
+	if (m==0) return n;
+ 	return nwd(m,n%m);
+} 
 }
-	
+
+void plik::zliczenie(){ // jeśli nwd jest równe 1 to +1
+	int ileN=0;
+ for(int i=0; i<1000; i++){
+ if (nwd(licz[i],mian[i])==1)
+ ileN++;
+ }
+}	
+
 
 
 void plik::wypisanie(){
-cout<<"wyniki: "<<minimum_licznik<<" "<<minimum_mianownik<<endl;
+cout<<"liczba zapisanych w pliku ułamków, które zostały podane w postaci nieskracalnej: "<<ileN;
+    wyniki.close();
 	} 
 
 int main(int argc, char** argv) {
     plik p;
     p.otworzPlik();
     p.wczytajPlik();
-    p.petla();
+    p.Euklides();
+    p.zliczenie();
     p.wypisanie();
     p.zamknijPlik();  
     return 0;
