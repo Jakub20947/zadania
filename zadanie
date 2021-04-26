@@ -1,18 +1,21 @@
 #include <iostream>
 #include <string>
-
 #include <fstream>
 using namespace std;
+#define N 1000
+#define T 3
 
 class plik {
     ifstream input;
+    int t[T][N];
     string nazwa_pliku = "trojki.txt";
     
     public:
         void otworzPlik();
         void zamknijPlik();
         void wczytajPlik();
-        void oblicz_sume();
+        void czy_pierwsze();
+        void pierwsza();
 };
 
 void plik::otworzPlik() {
@@ -30,35 +33,27 @@ void plik::wczytajPlik() {
   int i, liczba1, liczba2, liczba3; 
      for (i=1; i<=1000; i++)
  {
- scanf("%i %i %i\n",&liczba1, &liczba2, &liczba3);
+ input >> t[0][i] >> t[1][i] >> t[2][i];
  } 
-
-		
 }
 
-void plik::oblicz_sume(){
-	int suma_cyfr;
-	int a;
-	int suma;
-	{int suma=0;
- 	while (a>0)
- 	{suma=suma+a%10;a=a/10;}
-	 return(suma);
+void plik::czy_pierwsze(){
+	int i,pierwsza;
+	if (t%i==0) return 0;
+for (i=1; i<=1000; i++)
+{
+ if ((t[0][i] * t[1][i])==t[2][i]) {if (pierwsza(t[0][i])&&pierwsza(t[1][i])) 
+ cout<<("%i %i %i\n",t[0][i] , t[1][i],  t[2][i);
+  } 
+}
+}
 } 
  
- if ((suma_cyfr(liczba1)+suma_cyfr(liczba2))==liczba3)){
- 	 cout<< liczba1 <<liczba2 <<liczba3;
-
- }
- 
-}
-
-
 int main(int argc, char** argv) {
     plik p;
     p.otworzPlik();
     p.wczytajPlik();
-    p.oblicz_sume();
+    p.czy_pierwsze();
     p.zamknijPlik();  
     return 0;
 }
