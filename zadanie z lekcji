@@ -14,7 +14,6 @@ class plik {
         void wczytajPlik();
         void twierdzenie();
         void czyTrojkat();
-        void pierwsza();
 };
 
 void plik::otworzPlik() {
