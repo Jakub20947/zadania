@@ -1,21 +1,20 @@
 #include <iostream>
 #include <string>
-#include <iomanip>
 #include <fstream>
 using namespace std;
 
+
 class plik {
     ifstream input;
-    string nazwa_pliku = "dane_ulamki.txt";
+    string nazwa_pliku = "trojki.txt";
     
     public:
         void otworzPlik();
         void zamknijPlik();
         void wczytajPlik();
-        void Euklides();
-        void wypisanie(); 
-        void zliczenie();
-        
+        void twierdzenie();
+        void czyTrojkat();
+        void pierwsza();
 };
 
 void plik::otworzPlik() {
@@ -30,41 +29,34 @@ void plik::zamknijPlik() {
 }
 
 void plik::wczytajPlik() {
-    int n[1000];
-    int m[1000];
-    for(int i=0;i<1000;i++)
-        input>>n[i]>>m[i];
-		
-}
-void plik::Euklides(){
-	int nwd(int n, int m){
-	if (m==0) return n;
- 	return nwd(m,n%m);
-} 
+  int i, liczba1, liczba2, liczba3; 
+     for (i=1; i<=1000; i++)
+ {
+ input >> liczba1 >> liczba2 >> liczba3;
+ } 
 }
 
-void plik::zliczenie(){ // jeśli nwd jest równe 1 to +1
-	int ileN=0;
- for(int i=0; i<1000; i++){
- if (nwd(licz[i],mian[i])==1)
- ileN++;
- }
-}	
+void plik::twierdzenie(){
 
+if(((liczba1*liczba1+liczba2*liczba2)==liczba3*liczba3)  ||
+((liczba1*liczba1+liczba3*liczba3)==liczba2*liczba2)     ||
+((liczba3*liczba3+liczba2*liczba2)==liczba1*liczba1)){
+	return prostokatny;
+}
+}
+void plik::czyTrojkat(){
+	int dlugosc=0;
+	return((liczba1+liczba2>liczba3)&&(liczba2+liczba3>liczba1)&&(liczba1+liczba3>liczba2));
+	if (dlugosc>max)max=dlugosc;
+}
 
-
-void plik::wypisanie(){
-cout<<"liczba zapisanych w pliku ułamków, które zostały podane w postaci nieskracalnej: "<<ileN;
-    wyniki.close();
-	} 
-
+ 
 int main(int argc, char** argv) {
     plik p;
     p.otworzPlik();
     p.wczytajPlik();
-    p.Euklides();
-    p.zliczenie();
-    p.wypisanie();
+    p.twierdzenie();
+    p.czyTrojkat();
     p.zamknijPlik();  
     return 0;
 }
